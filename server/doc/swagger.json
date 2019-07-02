@@ -1,0 +1,327 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "RestAPI endpoints to list the episodes of Rick&amp;Morty Series",
+      "version": "1.0.0",
+      "title": "Rick-Morty Series"
+    },
+    "tags": [
+      {
+        "name": "Episodes",
+        "description": "All action on Episodes"
+      },
+      {
+        "name": "CharacterList",
+        "description": "Actions for characters"
+      },
+      {
+        "name": "Comments",
+        "description": "Actions for comments"
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+      "/episodes": {
+        "get": {
+          "tags": [
+            "Episodes"
+          ],
+          "summary": "Get the list of all episodes",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Get the list of all episodes",
+              "schema": {
+                "$ref": "#/definitions/Episodes"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      },
+      "/episodes/:id": {
+        "get": {
+          "tags": [
+            "CharacterList"
+          ],
+          "summary": "Get all characters in an episode",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Get all characters in an episode",
+              "schema": {
+                "$ref": "#/definitions/EpisodeCharacters"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "404": {
+              "description": "Episode Not Found"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      },
+      "/episodes/:id/": {
+        "post": {
+          "tags": [
+            "Comments"
+          ],
+          "summary": "Add comment to an episode",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Add comment to an episode",
+              "schema": {
+                "$ref": "#/definitions/Comments"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      },
+      "/episodes/:id/comment": {
+        "get": {
+          "tags": [
+            "Comments"
+          ],
+          "summary": "Get all the comment of an episode",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "show all the comment of an episode",
+              "schema": {
+                "$ref": "#/definitions/Comments"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "404": {
+              "description": "Episode Not Found"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      },
+      "/episodes/:id/withcommentcount": {
+        "get": {
+          "tags": [
+            "Comments"
+          ],
+          "summary": "Get comment count of an episode",
+          "description": "",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "show individual comment and display their comment count",
+              "schema": {
+                "$ref": "#/definitions/CommentCount"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Ok"
+            },
+            "404": {
+              "description": "Episode Not Found"
+            }
+          },
+          "security": [
+            {
+              "petstore_auth": [
+                "write:pets",
+                "read:pets"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "securityDefinitions": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+        "flow": "implicit",
+        "scopes": {
+          "write:pets": "modify pets in your account",
+          "read:pets": "read your pets"
+        }
+      },
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    },
+    "definitions": {
+      "Comments": {
+        "type": "object",
+        "properties": {
+          "episode": {
+            "type": "integer",
+            "example": "1",
+            "description": "The episode Ip"
+          },
+          "comment": {
+            "type": "string",
+            "description": "Users Comment on the episod"
+          },
+          "ipaddress": {
+            "type": "string",
+            "description": "Users public Ip address"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Comment date"
+          }
+        },
+        "xml": {
+          "name": "Comments"
+        }
+      },
+      "CommentCount": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Mortynight Run",
+            "description": "Episode Name"
+          },
+          "comment": {
+            "type": "integer",
+            "example": "3",
+            "description": "Number of comment for the Episode"
+          },
+          "Characters": {
+            "type": "object",
+            "example": "https://rickandmortyapi.com/api/character/1"
+          }
+        },
+        "xml": {
+          "name": "CommentCount"
+        }
+      },
+      "EpisodeCharacters": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Mortynight Run",
+            "description": "Episode Name"
+          },
+          "Characters": {
+            "type": "object",
+            "example": "https://rickandmortyapi.com/api/character/1",
+            "description": "List of characters in the episode"
+          }
+        },
+        "xml": {
+          "name": "EpisodeCharacters"
+        }
+      },
+      "Episodes": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "object",
+            "example": "Pilot",
+            "description": "List all the episodes"
+          }
+        },
+        "xml": {
+          "name": "EpisodeCharacters"
+        }
+      }
+    }
+  }
