@@ -23,7 +23,15 @@ RestAPI endpoints to list the episodes of Rick&amp;Morty Series
 
 ## Heroku Deployment
 
-Application was deployed to Heroku. Use public URL [https://rick-morty.herokuapp.com/](https://rick-morty.herokuapp.com/) with API endpoints.
+Application was deployed to Heroku. Use public URL [https://rick-morty1.herokuapp.com/](https://rick-morty1.herokuapp.com/) with API endpoints.
+
+## Swagger Documentation
+
+API Documention was generated with [Swagger](https://rick-morty1.herokuapp.com/api-docs/).
+
+## Docker
+
+[Docker](https://hub.docker.com/r/eeeshofonie/rick-morty).s
 
 
 ## Technologies Used
