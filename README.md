@@ -37,7 +37,7 @@ API Documention was generated with [Swagger](https://rick-morty1.herokuapp.com/a
 ## Technologies Used
 
 * [Node-js](https://nodejs.org/en/) Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
-* [MongoDB](https://www.mongodb.com/) is a cross-platform document-oriented database program.
+* [Postgres / ElephantSql](https://www.elephantsql.com/) 
 * [Babel](https://babeljs.io/) used for transpiling codes from ES6 to ES5
 
 ## Installations
@@ -68,17 +68,17 @@ git
   npm run start-dev
 ```
 
-* Use `http://localhost:3000` as base url for endpoints
+* Use `http://localhost:4000` as base url for endpoints
 
 ### Endpoints
 
 | METHOD | DESCRIPTION                             | ENDPOINTS
 | ------ | --------------------------------------- | -------------------------
 | GET    | Get the list of all episodes            | `/api/v1/episodes`
-| GET    | Get a characters in a episode           | `/api/v1/episodes/:id`
-| POST   | Add comment to an episode               | `/api/v1/episodes/:id/`
-| GET    | Get all the comments of an episode      | `/api/v1/episodes/:13/comment`
-| GET    | show comment count of an episode        | `/api/v1/episodes/:id/withcommentcount`
+| GET    | Get a characters in a episode           | `/api/v1/episodes/:id/characters`
+| POST   | Add comment to an episode               | `/api/v1/episodes/:id/addcomment`
+| GET    | Get all the comments of an episode      | `/api/v1/episodes/:13/showcomments`
+| GET    | show comment count of an episode        | `/api/v1/episodes/:id/episodecommentcount`
 
 
 
