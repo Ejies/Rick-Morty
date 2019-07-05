@@ -22,10 +22,13 @@
   "homepage": "https://github.com/Ejies/Rick-Morty#readme",
   "dependencies": {
     "@types/sanitize-html": "^1.20.0",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "ip": "^1.1.5",
+    "moment": "^2.24.0",
     "mongoose": "^5.6.2",
     "node-fetch": "^2.6.0",
+    "pg": "^7.11.0",
     "swagger-ui-express": "^4.0.6"
   },
   "devDependencies": {
